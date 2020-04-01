@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.unl.cse.csce361.petting_zoo.view.javafxview.GraphicalUserInterface">
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="🐘🦏 Archie's Petting Zoo 🐅🐺" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font></Text>
+   </top>
+   <right>
+      <Label fx:id="informationLabel" alignment="TOP_LEFT" prefHeight="400.0" prefWidth="350.0" BorderPane.alignment="BOTTOM_CENTER">
+         <font>
+            <Font name="Courier New" size="14.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
+   </right>
+   <left>
+      <TilePane fx:id="buttonPane" alignment="TOP_CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
+         </padding>
+      </TilePane>
+   </left>
+</BorderPane>
