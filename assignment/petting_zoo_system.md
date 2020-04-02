@@ -61,7 +61,7 @@ git commit --author="Herbie Husker <herbie@huskers.unl.edu>"
     1.  Clone the project: `git clone <URL>` (here the angle brackets should
         not be included).
 
-        -   **Do *NOT* place your car rental system repository inside your
+        -   **Do *NOT* place your petting zoo system repository inside your
             csce361-homework repository!**
 
     1.  Import the project into your IDE. The project is set up as a Maven
@@ -632,7 +632,7 @@ requiring any particular number of tests.
 For grading, we will clone your copy of the project after it is due, and we
 will look for:
 
--   Source code for your car rental system
+-   Source code for your petting zoo system
 -   Unit tests for your source code
 
 *It is your responsibility to ensure that your work is in the **correct
@@ -652,7 +652,7 @@ The assignment is worth **39 points**:
     -   View subsystem presents information to the user
 
 -   **4 points** for implementing the Builder Pattern
-    -   Use the Builder Pattern to create books, which may have specified or
+    -   Use the Builder Pattern to create animals, which may have specified or
         default values for their fields
 
 -   **4 points** for implementing the Command Pattern
