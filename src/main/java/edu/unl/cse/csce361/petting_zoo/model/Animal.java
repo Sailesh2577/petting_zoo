@@ -7,6 +7,8 @@ public interface Animal {
 
     int getMassInKg();
 
+    double getPrice();
+
     String getSpecies();
 
     boolean isMale();

@@ -61,6 +61,7 @@ public class AnimalBuilder {
         }
     }
 
+
     private void setVacuousDefaults() {
         type = AnimalEntity.AnimalType.UNKNOWN;
         sex = AnimalEntity.Sex.UNKNOWN;
@@ -72,7 +73,34 @@ public class AnimalBuilder {
     }
 
     public Animal build() {
-        return new AnimalEntity(name, type, sex, massInKg, species,
+        return new AnimalEntity(name, type, sex, massInKg, (pricePerKg*massInKg), species,
                 reactionToPetting, reactionToFeeding, reactionToWatching);
     }
+
+    public AnimalEntity.AnimalType getType() {
+        return type;
+    }
+
+    public void setType(AnimalEntity.AnimalType type) {
+        this.type = type;
+    }
+
+    public AnimalEntity.Sex getSex() {
+        return sex;
+    }
+
+    public AnimalBuilder setSex(AnimalEntity.Sex sex) {
+        this.sex = sex;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public AnimalBuilder setName(String name) {
+        this.name = name;
+        return this;
+    }
+
 }
