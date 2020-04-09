@@ -158,14 +158,79 @@ public class PettingZoo {
         for (LocationEntity location: initialLocations) {
             location.setZoo(zoo);
         }
-        AnimalEntity owl = (AnimalEntity) new AnimalBuilder("brea_owl").build();
-        owl.setName("Hooter");                          /* ********     ELIMINATE THESE LINES      **********/
-        owl.setSex(AnimalEntity.Sex.FEMALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
+
+        AnimalEntity owl = (AnimalEntity) new AnimalBuilder("brea_owl").setName("Hooter").setSex(AnimalEntity.Sex.FEMALE).build();
         owl.setLocation(theBarn);
-        zoo.setAnimals(Stream.of(owl).collect(Collectors.toSet()));
         owl.setZoo(zoo);
+
+        AnimalEntity mammoth = (AnimalEntity) new AnimalBuilder("Mammoth").setName("Mamu").setSex(AnimalEntity.Sex.MALE).build();
+        mammoth.setLocation(theBarn);
+        mammoth.setZoo(zoo);
+
+        AnimalEntity sloth = (AnimalEntity) new AnimalBuilder("sloth").setName("slou").setSex(AnimalEntity.Sex.FEMALE).build();
+        sloth.setLocation(theBarn);
+        sloth.setZoo(zoo);
+
+        AnimalEntity saberToothedCat = (AnimalEntity) new AnimalBuilder("Saber-Toothed Cat").setName("Sabu").setSex(AnimalEntity.Sex.MALE).build();
+        saberToothedCat.setLocation(theBarn);
+        saberToothedCat.setZoo(zoo);
+
+        AnimalEntity direWolf = (AnimalEntity) new AnimalBuilder("Dire Wolf").setName("Dolf").setSex(AnimalEntity.Sex.MALE).build();
+        direWolf.setLocation(theBarn);
+        direWolf.setZoo(zoo);
+
+        zoo.setAnimals(Stream.of(owl, mammoth, sloth, saberToothedCat, direWolf).collect(Collectors.toSet()));
         HibernateUtil.getSession().save(zoo);
         HibernateUtil.getSession().getTransaction().commit();
+
+//        AnimalEntity owl = (AnimalEntity) new AnimalBuilder("brea_owl").build();
+//        owl.setName("Hooter");                          /* ********     ELIMINATE THESE LINES      **********/
+//        owl.setSex(AnimalEntity.Sex.FEMALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
+//        owl.setLocation(theBarn);
+//        zoo.setAnimals(Stream.of(owl).collect(Collectors.toSet()));
+//        owl.setZoo(zoo);
+//        HibernateUtil.getSession().save(zoo);
+//        HibernateUtil.getSession().getTransaction().commit();
+//
+//        HibernateUtil.getSession().beginTransaction();
+//        AnimalEntity mammoth = (AnimalEntity) new AnimalBuilder("Mammoth").build();
+//        mammoth.setName("Mamu");                          /* ********     ELIMINATE THESE LINES      **********/
+//        mammoth.setSex(AnimalEntity.Sex.MALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
+//        mammoth.setLocation(theBarn);
+//        zoo.setAnimals(Stream.of(mammoth).collect(Collectors.toSet()));
+//        mammoth.setZoo(zoo);
+//        HibernateUtil.getSession().save(zoo);
+//        HibernateUtil.getSession().getTransaction().commit();
+//
+//        HibernateUtil.getSession().beginTransaction();
+//        AnimalEntity sloth = (AnimalEntity) new AnimalBuilder("Sloth").build();
+//        sloth.setName("Slou");                          /* ********     ELIMINATE THESE LINES      **********/
+//        sloth.setSex(AnimalEntity.Sex.FEMALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
+//        sloth.setLocation(theBarn);
+//        zoo.setAnimals(Stream.of(sloth).collect(Collectors.toSet()));
+//        sloth.setZoo(zoo);
+//        HibernateUtil.getSession().save(zoo);
+//        HibernateUtil.getSession().getTransaction().commit();
+//
+//        HibernateUtil.getSession().beginTransaction();
+//        AnimalEntity saberToothedCat = (AnimalEntity) new AnimalBuilder("Saber-Toothed Cat").build();
+//        saberToothedCat.setName("Sabu");                          /* ********     ELIMINATE THESE LINES      **********/
+//        saberToothedCat.setSex(AnimalEntity.Sex.FEMALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
+//        saberToothedCat.setLocation(theBarn);
+//        zoo.setAnimals(Stream.of(saberToothedCat).collect(Collectors.toSet()));
+//        saberToothedCat.setZoo(zoo);
+//        HibernateUtil.getSession().save(zoo);
+//        HibernateUtil.getSession().getTransaction().commit();
+//
+//        HibernateUtil.getSession().beginTransaction();
+//        AnimalEntity direWolf = (AnimalEntity) new AnimalBuilder("Dire Wolf").build();
+//        direWolf.setName("Dolf");                          /* ********     ELIMINATE THESE LINES      **********/
+//        direWolf.setSex(AnimalEntity.Sex.MALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
+//        direWolf.setLocation(theBarn);
+//        zoo.setAnimals(Stream.of(direWolf).collect(Collectors.toSet()));
+//        direWolf.setZoo(zoo);
+//        HibernateUtil.getSession().save(zoo);
+//        HibernateUtil.getSession().getTransaction().commit();
         return zoo;
     }
 
