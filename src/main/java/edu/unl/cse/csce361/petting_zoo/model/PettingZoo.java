@@ -178,6 +178,8 @@ public class PettingZoo implements Observer {
         HibernateUtil.getSession().getTransaction().commit();
     }
 
+    //the Observer for the observer pattern
+
     @Override
     public void update(Observable observable, Object o) {
         //Should print but can't print in model area.

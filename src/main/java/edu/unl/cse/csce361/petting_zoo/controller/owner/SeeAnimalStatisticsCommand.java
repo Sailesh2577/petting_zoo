@@ -14,8 +14,6 @@ public class SeeAnimalStatisticsCommand implements Command{
     //following command pattern
     @Override
     public void execute(){
-        //Use MVC Pattern to use the view to print the statistics
-        //TextUserInterface.showInformation(PettingZoo.getPettingZoo().seeStatistics())
         List<Command> newMenu = new LinkedList<>();
         newMenu.add(new GoBackCommand());
         UserInterfaceManager.getUI().replaceCommands(newMenu);

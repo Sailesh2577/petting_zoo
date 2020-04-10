@@ -96,6 +96,7 @@ public class AnimalBuilder extends Observable {
      */
 
     public AnimalBuilder setCarnivore(){
+        //if there has been a change then notify the observer
         if(this.type != AnimalEntity.AnimalType.CARNIVORE) {
             //mark value as changed
             setChanged();

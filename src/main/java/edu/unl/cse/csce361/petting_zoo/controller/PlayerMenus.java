@@ -21,6 +21,7 @@ public class PlayerMenus {
             new SetAdmissionPriceCommand(),
             new BuyAnimalCommand(),
             new SellAnimalCommand(),
+            new SeeAnimalStatisticsCommand(),
             new UpdateCommand()
     ));
 
