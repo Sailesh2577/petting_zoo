@@ -167,38 +167,7 @@ public class PettingZoo implements Observer {
         owl.setZoo(zoo);
         HibernateUtil.getSession().save(zoo);
         HibernateUtil.getSession().getTransaction().commit();
-
-
-
-//        AnimalEntity mammoth = (AnimalEntity) new AnimalBuilder("Mammoth").setName("Mamu").setSex(AnimalEntity.Sex.MALE).build();
-//        mammoth.setLocation(theBarn);
-//        mammoth.setZoo(zoo);
-//
-//        AnimalEntity sloth = (AnimalEntity) new AnimalBuilder("sloth").setName("slou").setSex(AnimalEntity.Sex.FEMALE).build();
-//        sloth.setLocation(theBarn);
-//        sloth.setZoo(zoo);
-//
-//        AnimalEntity saberToothedCat = (AnimalEntity) new AnimalBuilder("Saber-Toothed Cat").setName("Sabu").setSex(AnimalEntity.Sex.MALE).build();
-//        saberToothedCat.setLocation(theBarn);
-//        saberToothedCat.setZoo(zoo);
-//
-//        AnimalEntity direWolf = (AnimalEntity) new AnimalBuilder("Dire Wolf").setName("Dolf").setSex(AnimalEntity.Sex.MALE).build();
-//        direWolf.setLocation(theBarn);
-//        direWolf.setZoo(zoo);
-//
-//        zoo.setAnimals(Stream.of(owl, mammoth, sloth, saberToothedCat, direWolf).collect(Collectors.toSet()));
-//        HibernateUtil.getSession().save(zoo);
-//        HibernateUtil.getSession().getTransaction().commit();
-
-//        AnimalEntity owl = (AnimalEntity) new AnimalBuilder("brea_owl").build();
-//        owl.setName("Hooter");                          /* ********     ELIMINATE THESE LINES      **********/
-//        owl.setSex(AnimalEntity.Sex.FEMALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
-//        owl.setLocation(theBarn);
-//        zoo.setAnimals(Stream.of(owl).collect(Collectors.toSet()));
-//        owl.setZoo(zoo);
-//        HibernateUtil.getSession().save(zoo);
-//        HibernateUtil.getSession().getTransaction().commit();
-//
+        
         HibernateUtil.getSession().beginTransaction();
         AnimalEntity mammoth = (AnimalEntity) new AnimalBuilder("Mammoth").build();
         mammoth.setName("Mamu");                          /* ********     ELIMINATE THESE LINES      **********/
