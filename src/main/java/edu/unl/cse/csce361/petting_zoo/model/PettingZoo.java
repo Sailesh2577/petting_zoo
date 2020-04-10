@@ -167,9 +167,9 @@ public class PettingZoo implements Observer {
         owl.setZoo(zoo);
         HibernateUtil.getSession().save(zoo);
         HibernateUtil.getSession().getTransaction().commit();
-        
+
         HibernateUtil.getSession().beginTransaction();
-        AnimalEntity mammoth = (AnimalEntity) new AnimalBuilder("Mammoth").build();
+        AnimalEntity mammoth = (AnimalEntity) new AnimalBuilder("mammoth").build();
         mammoth.setName("Mamu");                          /* ********     ELIMINATE THESE LINES      **********/
         mammoth.setSex(AnimalEntity.Sex.MALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
         mammoth.setLocation(theBarn);
@@ -179,7 +179,7 @@ public class PettingZoo implements Observer {
         HibernateUtil.getSession().getTransaction().commit();
 
         HibernateUtil.getSession().beginTransaction();
-        AnimalEntity sloth = (AnimalEntity) new AnimalBuilder("Sloth").build();
+        AnimalEntity sloth = (AnimalEntity) new AnimalBuilder("sloth").build();
         sloth.setName("Slou");                          /* ********     ELIMINATE THESE LINES      **********/
         sloth.setSex(AnimalEntity.Sex.FEMALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
         sloth.setLocation(theBarn);
@@ -189,7 +189,7 @@ public class PettingZoo implements Observer {
         HibernateUtil.getSession().getTransaction().commit();
 
         HibernateUtil.getSession().beginTransaction();
-        AnimalEntity saberToothedCat = (AnimalEntity) new AnimalBuilder("Saber-Toothed Cat").build();
+        AnimalEntity saberToothedCat = (AnimalEntity) new AnimalBuilder("saberToothedCat").build();
         saberToothedCat.setName("Sabu");                          /* ********     ELIMINATE THESE LINES      **********/
         saberToothedCat.setSex(AnimalEntity.Sex.FEMALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
         saberToothedCat.setLocation(theBarn);
@@ -199,7 +199,7 @@ public class PettingZoo implements Observer {
         HibernateUtil.getSession().getTransaction().commit();
 
         HibernateUtil.getSession().beginTransaction();
-        AnimalEntity direWolf = (AnimalEntity) new AnimalBuilder("Dire Wolf").build();
+        AnimalEntity direWolf = (AnimalEntity) new AnimalBuilder("direWolf").build();
         direWolf.setName("Dolf");                          /* ********     ELIMINATE THESE LINES      **********/
         direWolf.setSex(AnimalEntity.Sex.MALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
         direWolf.setLocation(theBarn);
