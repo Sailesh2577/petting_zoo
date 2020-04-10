@@ -9,7 +9,7 @@ public class BuyLionCommand implements Command{
     @Override
     public void execute() {
         //Using chain calling and the builder pattern to create an animal
-        AnimalEntity lion = (AnimalEntity) new AnimalBuilder("African_Lion").setName("Cow R. D. Lee").setMale().build();
+        AnimalEntity lion = (AnimalEntity) new AnimalBuilder("lion").setName("Cow R. D. Lee").setMale().build();
         lion.addObserver(PettingZoo.getPettingZoo());
         PettingZoo.getPettingZoo().buyAnimal(lion, lion.getPrice());
     }
