@@ -76,8 +76,7 @@ public class AnimalBuilder extends Observable {
     }
 
     public Animal build() {
-        //where price = pricePerKg*MassInKg
-        return new AnimalEntity(name, type, sex, massInKg, (pricePerKg*massInKg), species,
+        return new AnimalEntity(name, type, sex, massInKg, ((double)pricePerKg*(double)massInKg), species,
                 reactionToPetting, reactionToFeeding, reactionToWatching);
     }
 

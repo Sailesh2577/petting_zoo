@@ -1,6 +1,11 @@
 package edu.unl.cse.csce361.petting_zoo.controller;
 
-import edu.unl.cse.csce361.petting_zoo.controller.owner.*;
+import edu.unl.cse.csce361.petting_zoo.controller.animalHandler.FeedAnimals;
+import edu.unl.cse.csce361.petting_zoo.controller.animalHandler.HealthOfAnimals;
+import edu.unl.cse.csce361.petting_zoo.controller.animalHandler.MoveAnimals;
+import edu.unl.cse.csce361.petting_zoo.controller.owner.BuyAnimalCommand;
+import edu.unl.cse.csce361.petting_zoo.controller.owner.SellAnimalCommand;
+import edu.unl.cse.csce361.petting_zoo.controller.owner.SetAdmissionPriceCommand;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,5 +37,11 @@ public class PlayerMenus {
             new BuyLionCommand(),
             new BuyTigerCommand(),
             new BuyZebraCommand()
+    ));
+
+    public static final List<Command> animalHandlerMenu = Collections.unmodifiableList(Arrays.asList(
+            new HealthOfAnimals(),
+            new FeedAnimals(),
+            new MoveAnimals()
     ));
 }
