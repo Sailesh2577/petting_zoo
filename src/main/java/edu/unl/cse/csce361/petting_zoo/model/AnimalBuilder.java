@@ -2,15 +2,16 @@ package edu.unl.cse.csce361.petting_zoo.model;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Observable;
 import java.util.Properties;
 
-public class AnimalBuilder {
+public class AnimalBuilder extends Observable {
     private AnimalEntity.AnimalType type;
     private AnimalEntity.Sex sex;
     private int massInKg;
     private String name;
     private String species;
-    private int pricePerKg;
+    private double pricePerKg;
     private String reactionToPetting;
     private String reactionToFeeding;
     private String reactionToWatching;
@@ -46,7 +47,9 @@ public class AnimalBuilder {
                         break;
                 }
                 sex = AnimalEntity.Sex.UNKNOWN;
-                reactionToPetting = reactionToFeeding = reactionToWatching = null;
+                reactionToPetting = archetype.getProperty("reactionToPetting");
+                reactionToFeeding = archetype.getProperty("reactionToFeeding");
+                reactionToWatching = archetype.getProperty("reactionToWatching");
             } else {
                 System.err.println("Unable to find archetype for " + species + ". Using vacuous defaults.");
                 setVacuousDefaults();
@@ -61,6 +64,7 @@ public class AnimalBuilder {
         }
     }
 
+
     private void setVacuousDefaults() {
         type = AnimalEntity.AnimalType.UNKNOWN;
         sex = AnimalEntity.Sex.UNKNOWN;
@@ -72,7 +76,150 @@ public class AnimalBuilder {
     }
 
     public Animal build() {
-        return new AnimalEntity(name, type, sex, massInKg, species,
+        //where price = pricePerKg*MassInKg
+        return new AnimalEntity(name, type, sex, massInKg, (pricePerKg*massInKg), species,
                 reactionToPetting, reactionToFeeding, reactionToWatching);
     }
+
+    public AnimalEntity.AnimalType getType() {
+        return type;
+    }
+
+    public AnimalBuilder setType(AnimalEntity.AnimalType type) {
+        this.type = type;
+        return this;
+    }
+
+    /*The following is the using the builder and the observer pattern
+        the builder pattern allows for chain calling when creating an animal
+        the observer pattern calls notifyObservers that an update has been changed when appropriate
+     */
+
+    public AnimalBuilder setCarnivore(){
+        if(this.type != AnimalEntity.AnimalType.CARNIVORE) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(type);
+        }
+        this.type = AnimalEntity.AnimalType.CARNIVORE;
+        return this;
+    }
+
+    public AnimalBuilder setHerbivore(){
+        if(this.type != AnimalEntity.AnimalType.HERBIVORE) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(type);
+        }
+        this.type = AnimalEntity.AnimalType.HERBIVORE;
+        return this;
+    }
+
+    public AnimalBuilder setMale(){
+        if(this.sex != AnimalEntity.Sex.MALE) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(sex);
+        }
+            this.sex = AnimalEntity.Sex.MALE;
+            return this;
+    }
+
+    public AnimalBuilder setFemale(){
+        if(this.sex != AnimalEntity.Sex.FEMALE) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(sex);
+        }
+        this.sex = AnimalEntity.Sex.FEMALE;
+        return this;
+    }
+
+    public AnimalBuilder setMassInKg(int massInKg){
+
+        if(this.massInKg != massInKg) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(massInKg);
+        }
+        this.massInKg = massInKg;
+        return this;
+    }
+
+    /*Note: we don't need a set price because price is determined based on other inputs*/
+
+    public AnimalBuilder setPricePerKg(double pricePerKg){
+
+        if(this.pricePerKg != pricePerKg) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(pricePerKg);
+        }
+
+        this.pricePerKg = pricePerKg;
+        return this;
+    }
+
+    public AnimalBuilder setName(String name) {
+
+        if(!this.name.equals(name)) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(name);
+        }
+
+        this.name = name;
+        return this;
+    }
+
+    public AnimalBuilder setSpecies(String species){
+
+        if(!this.species.equals(species)) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(species);
+        }
+
+        this.species = species;
+        return this;
+    }
+
+    public AnimalBuilder setReactionToPetting(String reaction){
+
+        if(!this.reactionToPetting.equals(reaction)) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(reaction);
+        }
+
+        this.reactionToPetting = reaction;
+        return this;
+    }
+
+    public AnimalBuilder setReactionToFeeding(String reaction){
+
+        if(!this.reactionToFeeding.equals(reaction)) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(reaction);
+        }
+
+        this.reactionToFeeding = reaction;
+        return this;
+    }
+
+    public AnimalBuilder setReactionToWatching(String reaction){
+
+        if(!this.reactionToWatching.equals(reaction)) {
+            //mark value as changed
+            setChanged();
+            notifyObservers(reaction);
+        }
+
+        this.reactionToWatching = reaction;
+        return this;
+    }
+
+
+
 }

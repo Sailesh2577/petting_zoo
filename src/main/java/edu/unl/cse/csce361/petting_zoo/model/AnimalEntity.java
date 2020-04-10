@@ -1,10 +1,11 @@
 package edu.unl.cse.csce361.petting_zoo.model;
 
 import javax.persistence.*;
+import java.util.Observable;
 import java.util.Optional;
 
 @Entity
-public class AnimalEntity implements Animal {
+public class AnimalEntity extends Observable implements Animal {
     @Id
     @GeneratedValue
     private int tagNumber;
@@ -20,6 +21,9 @@ public class AnimalEntity implements Animal {
 
     @Column
     private int massInKg;
+
+    @Column
+    private double price;
 
     @Column
     private String species;
@@ -41,12 +45,13 @@ public class AnimalEntity implements Animal {
     }
 
     public AnimalEntity(String name, AnimalType type, Sex sex,      // convenience constructor
-                        int massInKg, String species,
+                        int massInKg, double price, String species,
                         String reactionToPetting, String reactionToFeeding, String reactionToWatching) {
         setName(name);
         setType(type);
         setSex(sex);
         setMassInKg(massInKg);
+        setPrice(price);
         setSpecies(species);
         setReactionToPetting(reactionToPetting);
         setReactionToFeeding(reactionToFeeding);
@@ -99,6 +104,14 @@ public class AnimalEntity implements Animal {
 
     public void setMassInKg(int massInKg) {
         this.massInKg = massInKg;
+    }
+
+    public double getPrice(){
+        return price;
+    }
+
+    public void setPrice(double price){
+        this.price = price;
     }
 
     @Override

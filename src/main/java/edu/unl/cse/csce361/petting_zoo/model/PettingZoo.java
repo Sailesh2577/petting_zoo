@@ -1,16 +1,13 @@
 package edu.unl.cse.csce361.petting_zoo.model;
 
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SuppressWarnings("unused")
 @Entity
-public class PettingZoo {
+public class PettingZoo implements Observer {
     public static PettingZoo getPettingZoo() {
         PettingZoo zoo;
         Query query = HibernateUtil.getSession().createQuery("from PettingZoo");
@@ -104,7 +101,7 @@ public class PettingZoo {
         this.lastUpdate = lastUpdate;
     }
 
-    public void buyAnimal(Animal animal, int price) {
+    public void buyAnimal(Animal animal, double price) {
         LocationEntity stalls = locations.stream()
                 .filter(location -> location.getType() == LocationType.STALLS)
                 .collect(Collectors.toList()).get(0);
@@ -158,9 +155,9 @@ public class PettingZoo {
         for (LocationEntity location: initialLocations) {
             location.setZoo(zoo);
         }
-        AnimalEntity owl = (AnimalEntity) new AnimalBuilder("brea_owl").build();
-        owl.setName("Hooter");                          /* ********     ELIMINATE THESE LINES      **********/
-        owl.setSex(AnimalEntity.Sex.FEMALE);            /* ******** WITH ANIMALBUILDER CHAIN CALLS **********/
+        //using chain calling to follow the builder pattern
+        AnimalEntity owl = (AnimalEntity) new AnimalBuilder("brea_owl").setName("Hooter").setFemale().build();
+        owl.addObserver(zoo);   //adding the observer for the observer pattern
         owl.setLocation(theBarn);
         zoo.setAnimals(Stream.of(owl).collect(Collectors.toSet()));
         owl.setZoo(zoo);
@@ -179,5 +176,10 @@ public class PettingZoo {
         }
         HibernateUtil.getSession().remove(zoo);
         HibernateUtil.getSession().getTransaction().commit();
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        //Should print but can't print in model area.
     }
 }
