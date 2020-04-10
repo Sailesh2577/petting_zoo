@@ -18,16 +18,24 @@ public class AnimalsAtTheBarnButton implements Command {
     public void execute() {
         Query query = HibernateUtil.getSession().createQuery("from AnimalEntity");
         StringBuilder outputStr = new StringBuilder();
-
+        int count = 0;
         outputStr.append(toString());
         outputStr.append(": \n");
         for (Object result : query.getResultList()) {
             AnimalEntity animalEntityObject = (AnimalEntity) result;
-            outputStr.append(animalEntityObject.getName());
-            outputStr.append(" can be found at: ");
-            outputStr.append(animalEntityObject.getLocation());
-            outputStr.append("\n");
+            if(animalEntityObject.getLocation().getName().equalsIgnoreCase("The Barn")) {
+                count++;
+                outputStr.append(count);
+                outputStr.append(") ");
+                outputStr.append(animalEntityObject.getName());
+                outputStr.append(" of type: ");
+                outputStr.append(animalEntityObject.getType());
+                outputStr.append("\n");
+            }
         }
+        outputStr.append("\n");
+        outputStr.append("Number of Animals at Barn: ");
+        outputStr.append(count);
         UserInterfaceManager.getUI().showInformation(outputStr.toString());
     }
 }

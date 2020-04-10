@@ -55,6 +55,11 @@ public class PettingZoo implements Observer {
     @Column
     private Date lastUpdate;
 
+    public static void feedAllAnimals(PettingZoo pettingZoo) {
+        Query query = HibernateUtil.getSession().createQuery("UPDATE AnimalEntity SET hunger = hunger - 1");
+        query.executeUpdate();
+    }
+
     public Integer getId() {
         return id;
     }
