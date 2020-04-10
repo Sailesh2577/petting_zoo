@@ -25,7 +25,18 @@ public class PlayerMenus {
     public static final List<Command> ownerMenu = Collections.unmodifiableList(Arrays.asList(
             new SetAdmissionPriceCommand(),
             new BuyAnimalCommand(),
-            new SellAnimalCommand()
+            new SellAnimalCommand(),
+            new SeeAnimalStatisticsCommand(),
+            new UpdateCommand()
+    ));
+
+    public static final List<Command> buyMenu = Collections.unmodifiableList(Arrays.asList(
+            new BuyBunnyCommand(),
+            new BuyGirrafeCommand(),
+            new BuyKodiakBearCommand(),
+            new BuyLionCommand(),
+            new BuyTigerCommand(),
+            new BuyZebraCommand()
     ));
 
     public static final List<Command> animalHandlerMenu = Collections.unmodifiableList(Arrays.asList(

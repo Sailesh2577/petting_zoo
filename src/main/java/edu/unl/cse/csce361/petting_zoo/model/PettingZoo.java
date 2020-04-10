@@ -1,16 +1,13 @@
 package edu.unl.cse.csce361.petting_zoo.model;
 
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SuppressWarnings("unused")
 @Entity
-public class PettingZoo {
+public class PettingZoo implements Observer {
     public static PettingZoo getPettingZoo() {
         PettingZoo zoo;
         Query query = HibernateUtil.getSession().createQuery("from PettingZoo");
@@ -106,7 +103,7 @@ public class PettingZoo {
         this.lastUpdate = lastUpdate;
     }
 
-    public void buyAnimal(Animal animal, int price) {
+    public void buyAnimal(Animal animal, double price) {
         LocationEntity stalls = locations.stream()
                 .filter(location -> location.getType() == LocationType.STALLS)
                 .collect(Collectors.toList()).get(0);
@@ -248,5 +245,12 @@ public class PettingZoo {
         }
         HibernateUtil.getSession().remove(zoo);
         HibernateUtil.getSession().getTransaction().commit();
+    }
+
+    //the Observer for the observer pattern
+
+    @Override
+    public void update(Observable observable, Object o) {
+        //Should print but can't print in model area.
     }
 }

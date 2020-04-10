@@ -1,10 +1,11 @@
 package edu.unl.cse.csce361.petting_zoo.model;
 
 import javax.persistence.*;
+import java.util.Observable;
 import java.util.Optional;
 
 @Entity
-public class AnimalEntity implements Animal {
+public class AnimalEntity extends Observable implements Animal {
     @Id
     @GeneratedValue
     private int tagNumber;
