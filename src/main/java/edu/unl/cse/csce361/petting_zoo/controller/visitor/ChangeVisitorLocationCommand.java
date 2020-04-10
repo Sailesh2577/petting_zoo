@@ -1,4 +1,4 @@
-package edu.unl.cse.csce361.petting_zoo.controller.owner;
+package edu.unl.cse.csce361.petting_zoo.controller.visitor;
 
 import edu.unl.cse.csce361.petting_zoo.controller.Command;
 import edu.unl.cse.csce361.petting_zoo.controller.GoBackCommand;
@@ -8,7 +8,8 @@ import edu.unl.cse.csce361.petting_zoo.view.UserInterfaceManager;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BuyAnimalCommand implements Command {
+public class ChangeVisitorLocationCommand implements Command {
+
     @Override
     public void execute() {
         List<Command> newMenu = new LinkedList<>();
