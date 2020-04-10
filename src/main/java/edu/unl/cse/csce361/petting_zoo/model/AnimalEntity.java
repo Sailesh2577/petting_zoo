@@ -41,12 +41,18 @@ public class AnimalEntity extends Observable implements Animal {
     @Column
     private String reactionToWatching;
 
+    @Column
+    private Integer hunger;
+
+    @Column
+    private Integer stress;
+
     public AnimalEntity() {                                         // 0-argument constructor
     }
 
     public AnimalEntity(String name, AnimalType type, Sex sex,      // convenience constructor
                         int massInKg, Double price, String species,
-                        String reactionToPetting, String reactionToFeeding, String reactionToWatching) {
+                        String reactionToPetting, String reactionToFeeding, String reactionToWatching, Integer hunger, Integer stress) {
         setName(name);
         setType(type);
         setSex(sex);
@@ -56,6 +62,8 @@ public class AnimalEntity extends Observable implements Animal {
         setReactionToPetting(reactionToPetting);
         setReactionToFeeding(reactionToFeeding);
         setReactionToWatching(reactionToWatching);
+        setHungerLevel(hunger);
+        setStressLevel(stress);
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -155,6 +163,14 @@ public class AnimalEntity extends Observable implements Animal {
     public void setReactionToWatching(String reactionToWatching) {
         this.reactionToWatching = reactionToWatching;
     }
+
+    public void setStressLevel(Integer stress) { this.stress = stress; }
+
+    public void setHungerLevel(Integer hunger) { this.hunger = hunger;  }
+
+    public Integer getStressLevel() { return this.stress; }
+
+    public Integer getHungerLevel() { return this.hunger;  }
 
     public PettingZoo getZoo() {
         return zoo;

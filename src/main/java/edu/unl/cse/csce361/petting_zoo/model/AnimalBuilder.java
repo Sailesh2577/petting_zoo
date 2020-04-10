@@ -15,7 +15,8 @@ public class AnimalBuilder extends Observable {
     private String reactionToPetting;
     private String reactionToFeeding;
     private String reactionToWatching;
-
+    private Integer hunger;
+    private Integer stress;
     public AnimalBuilder() {
         setVacuousDefaults();
     }
@@ -35,6 +36,9 @@ public class AnimalBuilder extends Observable {
                 name = "the " + speciesWithSpaces;
                 massInKg = Integer.parseInt(archetype.getProperty("massInKg"));
                 pricePerKg = Integer.parseInt(archetype.getProperty("pricePerKg"));
+                hunger = Integer.parseInt(archetype.getProperty("hunger"));
+                stress = Integer.parseInt(archetype.getProperty("stress"));
+
                 switch (archetype.getProperty("type").toLowerCase()) {
                     case "carnivore":
                         type = AnimalEntity.AnimalType.CARNIVORE;
@@ -72,12 +76,14 @@ public class AnimalBuilder extends Observable {
         pricePerKg = 100;
         name = "that animal";
         species = "unknown";
+        hunger = 10;
+        stress = 20;
         reactionToPetting = reactionToFeeding = reactionToWatching = null;
     }
 
     public Animal build() {
         return new AnimalEntity(name, type, sex, massInKg, ((double)pricePerKg*(double)massInKg), species,
-                reactionToPetting, reactionToFeeding, reactionToWatching);
+                reactionToPetting, reactionToFeeding, reactionToWatching, hunger, stress);
     }
 
     public AnimalEntity.AnimalType getType() {
@@ -171,6 +177,18 @@ public class AnimalBuilder extends Observable {
         this.name = name;
         return this;
     }
+
+    public int getHungerLevel() {
+        return hunger;
+    }
+
+    public int getStressLevel() {
+        return stress;
+    }
+
+    public void setHungerLevel(int hunger) {this.hunger = hunger; }
+
+    public void setStressLevel(int stress) {this.stress = stress; }
 
     public AnimalBuilder setSpecies(String species){
 
