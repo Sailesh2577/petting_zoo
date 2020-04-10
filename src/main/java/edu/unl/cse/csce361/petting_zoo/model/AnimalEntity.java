@@ -22,7 +22,7 @@ public class AnimalEntity implements Animal {
     private int massInKg;
 
     @Column
-    private double price;
+    private Double price;
 
     @Column
     private String species;
@@ -44,7 +44,7 @@ public class AnimalEntity implements Animal {
     }
 
     public AnimalEntity(String name, AnimalType type, Sex sex,      // convenience constructor
-                        int massInKg, double price, String species,
+                        int massInKg, Double price, String species,
                         String reactionToPetting, String reactionToFeeding, String reactionToWatching) {
         setName(name);
         setType(type);
@@ -105,11 +105,11 @@ public class AnimalEntity implements Animal {
         this.massInKg = massInKg;
     }
 
-    public double getPrice(){
+    public Double getPrice(){
         return price;
     }
 
-    public void setPrice(double price){
+    public void setPrice(Double price){
         this.price = price;
     }
 

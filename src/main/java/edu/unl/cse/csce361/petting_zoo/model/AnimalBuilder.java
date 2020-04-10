@@ -73,7 +73,7 @@ public class AnimalBuilder {
     }
 
     public Animal build() {
-        return new AnimalEntity(name, type, sex, massInKg, (pricePerKg*massInKg), species,
+        return new AnimalEntity(name, type, sex, massInKg, ((double)pricePerKg*(double)massInKg), species,
                 reactionToPetting, reactionToFeeding, reactionToWatching);
     }
 

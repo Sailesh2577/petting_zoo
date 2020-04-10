@@ -25,6 +25,8 @@ public class PettingZoo {
     }
 
     public static PettingZoo resetPettingZoo(PettingZoo oldZoo) {
+        System.out.println("Inside reset");
+        System.out.println(oldZoo);
         deleteZoo(oldZoo);
         return initializeZoo();
     }
@@ -141,6 +143,7 @@ public class PettingZoo {
     }
 
     private static PettingZoo initializeZoo() {
+        System.out.println("Inside initialize");
         PettingZoo zoo;
         HibernateUtil.getSession().beginTransaction();
         zoo = new PettingZoo();
@@ -235,6 +238,7 @@ public class PettingZoo {
     }
 
     private static void deleteZoo(PettingZoo zoo) {
+        System.out.println("Inside Delete");
         HibernateUtil.getSession().beginTransaction();
         for (AnimalEntity animal : zoo.getAnimals()) {
             HibernateUtil.getSession().remove(animal);

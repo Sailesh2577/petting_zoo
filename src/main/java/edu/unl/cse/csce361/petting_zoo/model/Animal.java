@@ -7,7 +7,7 @@ public interface Animal {
 
     int getMassInKg();
 
-    double getPrice();
+    Double getPrice();
 
     String getSpecies();
 
