@@ -6,6 +6,8 @@ import edu.unl.cse.csce361.petting_zoo.model.HibernateUtil;
 import edu.unl.cse.csce361.petting_zoo.model.PettingZoo;
 import edu.unl.cse.csce361.petting_zoo.view.UserInterfaceManager;
 import org.hibernate.query.Query;
+import edu.unl.cse.csce361.petting_zoo.model.PettingZoo;
+
 
 public class FeedAnimals implements Command {
     @Override
@@ -15,6 +17,7 @@ public class FeedAnimals implements Command {
 
     @Override
     public void execute() {
+        HibernateUtil.getSession().beginTransaction();
         Query query = HibernateUtil.getSession().createQuery("from AnimalEntity");
         StringBuilder outputStr = new StringBuilder();
 
@@ -27,7 +30,10 @@ public class FeedAnimals implements Command {
         }
         outputStr.append("Fed all the animals!");
         UserInterfaceManager.getUI().showInformation(outputStr.toString());
-        PettingZoo.feedAllAnimals(PettingZoo.getPettingZoo());
+        javax.persistence.Query query1 = HibernateUtil.getSession().createQuery("UPDATE AnimalEntity SET hunger = hunger - 1");
+        query1.executeUpdate();
+        HibernateUtil.getSession().save(PettingZoo.getPettingZoo());
+        HibernateUtil.getSession().getTransaction().commit();
     }
 }
 
